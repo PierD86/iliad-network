@@ -1,0 +1,12 @@
+[project]
+name = "iliad-network"
+version = "0.1.0"
+description = "develop a NLP system that analyzes characters from The Iliad poem"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mypy>=1.14.1",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.4",
+]
