@@ -1,20 +1,27 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["iliad_network"]
+
 [project]
 name = "iliad-network"
 version = "0.1.0"
 description = "develop a NLP system that analyzes characters from The Iliad poem"
+authors = [{name = "Piero Danti", email = "piero.danti@gmail.com"}]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
+    "jupyter>=1.1.1",
     "mypy>=1.14.1",
+    "pip>=25.0",
     "pre-commit>=4.1.0",
-    "pytest>=8.3.4",
     "ruff>=0.9.4",
+    "spacy>=3.8.4",
+    "textblob>=0.19.0",
 ]
-packages = [{include = "iliad-network", from = "src"}]
 
-[build-system]
-requires = ["uv-build"]
-build-backend = "uv_build.api"
 
 [tool.mypy]
 exclude = ['\\.pyi$', 'docs', '.venv', 'notebooks']
@@ -55,7 +62,3 @@ relative-imports-order = "closest-to-furthest"
 extra-standard-library = ["typing"]
 section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
 known-first-party = []
-
-
-[tool.uv]
-resolver = "uv"  # Ensures uv's resolver is used instead of pip's
