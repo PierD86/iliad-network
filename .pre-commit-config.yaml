@@ -7,39 +7,28 @@ repos:
       - id: uv-export #autoexport uv.lock to requirements.txt
       - id: pip-compile # Compile requirements
         args: [requirements.txt]
-    
-    repos:
-    - repo: https://github.com/astral-sh/ruff-pre-commit
-      # Ruff version.
-      rev: v0.9.4
-      hooks:
-        # Run the linter.
-        - id: ruff
-          args: [ --fix ]
-        # Run the formatter.
-        - id: ruff-format
 
-  # - repo: local
-  #   hooks:
-  #     - id: ruff-linting
-  #       name: ruff-linting
-  #       entry: uv venv check
-  #       args: [--fix]
-  #       language: system
-  #       types_or: [python, jupyter]
-  #     - id: ruff-format
-  #       name: ruff-format
-  #       entry: uv venv exec ruff format
-  #       language: system
-  #       types_or: [python, jupyter]
-  #     - id: mypy
-  #       name: mypy
-  #       entry: uv venv exec mypy
-  #       args: ["--disallow-untyped-defs"]
-  #       language: system
-  #       types: [python]
-  #     - id: pytest
-  #       name: pytest
-  #       entry: uv venv exec pytest
-  #       language: system
-  #       types: [python]
+  - repo: local
+    hooks:
+      - id: ruff-linting
+        name: ruff-linting
+        entry: uv venv check
+        args: [--fix]
+        language: system
+        types_or: [python, jupyter]
+      - id: ruff-format
+        name: ruff-format
+        entry: uv venv exec ruff format
+        language: system
+        types_or: [python, jupyter]
+      - id: mypy
+        name: mypy
+        entry: uv venv exec mypy
+        args: ["--disallow-untyped-defs"]
+        language: system
+        types: [python]
+      - id: pytest
+        name: pytest
+        entry: uv venv exec pytest
+        language: system
+        types: [python]

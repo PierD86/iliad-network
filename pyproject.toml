@@ -10,3 +10,52 @@ dependencies = [
     "pytest>=8.3.4",
     "ruff>=0.9.4",
 ]
+packages = [{include = "iliad-network", from = "src"}]
+
+[build-system]
+requires = ["uv-build"]
+build-backend = "uv_build.api"
+
+[tool.mypy]
+exclude = ['\\.pyi$', 'docs', '.venv', 'notebooks']
+ignore_missing_imports = true
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+line-length = 99
+exclude = ["jupyter_notebook_config.py"]
+lint.select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+lint.ignore = [
+    "E501",  # line too long, handled by black
+    "C901",  # too complex
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.ruff.lint.isort]
+order-by-type = true
+relative-imports-order = "closest-to-furthest"
+extra-standard-library = ["typing"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+known-first-party = []
+
+
+[tool.uv]
+resolver = "uv"  # Ensures uv's resolver is used instead of pip's
