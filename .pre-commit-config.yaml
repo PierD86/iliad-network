@@ -5,8 +5,8 @@ repos:
     hooks:
       - id: uv-lock # ensure the lockfile is up-to-date
       - id: uv-export #autoexport uv.lock to requirements.txt
-      #- id: pip-compile # Compile requirements
-        #args: [requirements.txt]
+      - id: pip-compile # Compile requirements
+        args: [requirements.txt]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: "v0.6.3"
