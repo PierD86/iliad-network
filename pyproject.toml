@@ -15,6 +15,7 @@ requires-python = ">=3.12"
 dependencies = [
     "jupyter>=1.1.1",
     "mypy>=1.14.1",
+    "pandas>=2.2.3",
     "pip>=25.0",
     "pre-commit>=4.1.0",
     "ruff>=0.9.4",
