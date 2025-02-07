@@ -11,7 +11,7 @@ version = "0.1.0"
 description = "develop a NLP system that analyzes characters from The Iliad poem"
 authors = [{name = "Piero Danti", email = "piero.danti@gmail.com"}]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = "==3.12.*"
 dependencies = [
     "jupyter>=1.1.1",
     "mypy>=1.14.1",
