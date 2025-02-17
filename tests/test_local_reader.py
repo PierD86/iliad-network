@@ -4,7 +4,6 @@ from unittest.mock import mock_open, patch
 import pytest
 
 from iliad_network.components.data_models import PoemText
-from iliad_network.components.protocols import Reader
 from iliad_network.components.readers import LocalReader
 
 # Mocking a sample poem text
@@ -17,15 +16,14 @@ Atreus, king of men, and great Achilles, first fell out with one another.
 """
 
 
-# Test case for LocalReader
 @pytest.fixture
-def local_reader() -> Reader:
-    # Creating an instance of LocalReader for testing
+def local_reader() -> LocalReader:
+    """Fixture to create a LocalReader instance for testing."""
     return LocalReader(local_path=Path("test_poem.txt"))
 
 
-def test_run_read_poem(local_reader: Reader) -> None:
-    # Test that the poem text is correctly read and cleaned
+def test_run_read_poem(local_reader: LocalReader) -> None:
+    """Test that the LocalReader correctly reads and cleans poem text."""
     with patch("builtins.open", mock_open(read_data=MOCK_POEM_TEXT)):
         poem_text: PoemText = local_reader.run()
 

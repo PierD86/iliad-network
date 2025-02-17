@@ -1,5 +1,7 @@
 from typing import Protocol
 
+from spacy import language
+
 from iliad_network.components.data_models import PoemText
 
 
@@ -15,7 +17,14 @@ class PreProcessor(Protocol):
     def extract_characters(self, text: str) -> list[str]:
         pass
 
+    nlp_model: language
+
 
 class Analyzer(Protocol):
     def analyze(self, sentences: list[str], character: str) -> list[tuple[str, float]]:
         pass
+
+    def analyze_sentiment(self, sentence: str) -> float:
+        pass
+
+    preprocessor: PreProcessor
