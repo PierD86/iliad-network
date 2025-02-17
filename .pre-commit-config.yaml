@@ -1,6 +1,5 @@
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    # uv version.
     rev: 0.5.26
     hooks:
       - id: uv-lock # ensure the lockfile is up-to-date
@@ -8,33 +7,47 @@ repos:
       - id: pip-compile # Compile requirements
         args: [requirements.txt]
 
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.4.0"
+    hooks:
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.6.3"
+    rev: "v0.9.6"
     hooks:
       - id: ruff
         args: [--fix, --config=pyproject.toml]
       - id: ruff-format
         args: [--config=pyproject.toml]
 
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.15.0'
+    hooks:
+      - id: mypy
+        args: [--disallow-untyped-defs]
+
   # - repo: local
   #   hooks:
-  #     - id: ruff-linting
-  #       name: ruff-linting
-  #       entry: uv venv check --fix
-  #       args: [--fix]
-  #       language: system
-  #       types_or: [python, jupyter]
-  #     - id: ruff-format
-  #       name: ruff-format
-  #       entry: uv venv exec ruff format
-  #       language: system
-  #       types_or: [python, jupyter]
-  #     - id: mypy
-  #       name: mypy
-  #       entry: uv venv exec mypy
-  #       args: ["--disallow-untyped-defs"]
-  #       language: system
-  #       types: [python]
+  #     # - id: ruff-linting
+  #     #   name: ruff-linting
+  #     #   entry: uv venv check --fix
+  #     #   args: [--fix]
+  #     #   language: system
+  #     #   types_or: [python, jupyter]
+  #     # - id: ruff-format
+  #     #   name: ruff-format
+  #     #   entry: uv venv exec ruff format
+  #     #   language: system
+  #     #   types_or: [python, jupyter]
+  #     # - id: mypy
+  #     #   name: mypy
+  #     #   entry: uv venv exec mypy
+  #     #   args: ["--disallow-untyped-defs"]
+  #     #   language: system
+  #     #   types: [python]
   #     - id: pytest
   #       name: pytest
   #       entry: uv venv exec pytest

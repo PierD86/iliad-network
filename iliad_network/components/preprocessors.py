@@ -1,6 +1,4 @@
 import spacy
-import spacy.cli
-import spacy.util
 
 
 class TextPreProcessor:
