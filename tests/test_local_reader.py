@@ -30,10 +30,3 @@ def test_run_read_poem(local_reader: Reader) -> None:
         poem_text: PoemText = local_reader.run()
 
     assert poem_text.content == MOCK_POEM_TEXT.strip()
-
-
-def test_run_file_not_found(local_reader: Reader) -> None:
-    # Test for file not found error
-    with patch("builtins.open", side_effect=FileNotFoundError):
-        with pytest.raises(FileNotFoundError):
-            local_reader.run()

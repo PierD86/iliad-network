@@ -29,27 +29,10 @@ repos:
       - id: mypy
         args: [--disallow-untyped-defs]
 
-  # - repo: local
-  #   hooks:
-  #     # - id: ruff-linting
-  #     #   name: ruff-linting
-  #     #   entry: uv venv check --fix
-  #     #   args: [--fix]
-  #     #   language: system
-  #     #   types_or: [python, jupyter]
-  #     # - id: ruff-format
-  #     #   name: ruff-format
-  #     #   entry: uv venv exec ruff format
-  #     #   language: system
-  #     #   types_or: [python, jupyter]
-  #     # - id: mypy
-  #     #   name: mypy
-  #     #   entry: uv venv exec mypy
-  #     #   args: ["--disallow-untyped-defs"]
-  #     #   language: system
-  #     #   types: [python]
-  #     - id: pytest
-  #       name: pytest
-  #       entry: uv venv exec pytest
-  #       language: system
-  #       types: [python]
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: uv run pytest
+        language: system
+        types: [python]
